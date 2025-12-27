@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  orderservice:
+    build:
+      context: ./services/service-b
+      dockerfile: OrderService.Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      
+  calculationservice:
+    build:
+      context: ./services/service-a
+      dockerfile: CalculationService.Dockerfile
+    ports:
+      - "5001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
